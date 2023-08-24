@@ -107,6 +107,7 @@ function moveCamera() {
 
 }
 document.body.onscroll = moveCamera
+moveCamera()
 
 function animate() {
   requestAnimationFrame( animate )
@@ -114,6 +115,9 @@ function animate() {
   torus.rotateX(0.01)
   torus.rotateY(0.005)
   torus.rotateZ(0.01)
+
+  aurelie.rotateX(0.005)
+
 
   controls.update()
 
