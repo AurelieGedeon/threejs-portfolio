@@ -81,6 +81,8 @@ const aurelie = new THREE.Mesh(
 )
 scene.add(aurelie)
 
+aurelie.position.z = 30
+aurelie.position.x = -10
 
 //Jupiter
 const jupiterTexture = new THREE.TextureLoader().load('/images/jupiter.jpeg')
@@ -91,7 +93,20 @@ const jupiter = new THREE.Mesh(
 ) 
 scene.add(jupiter)
 
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top
+  jupiter.rotateX += 0.05
 
+  aurelie.rotateY(0.05)
+  aurelie.rotateY(0.075)
+  aurelie.rotateZ(0.05)
+
+  camera.position.x = t * -0.0002
+  camera.position.y = t * -0.0002
+  camera.position.z = t * -0.01
+
+}
+document.body.onscroll = moveCamera
 
 function animate() {
   requestAnimationFrame( animate )
