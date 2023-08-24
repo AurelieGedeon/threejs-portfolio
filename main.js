@@ -1,7 +1,5 @@
 import './style.css'
-
 import * as THREE from 'three'
-
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 const sizes = {
@@ -39,10 +37,10 @@ scene.add(torus)
 
 
 //Light
-const pointLight = new THREE.PointLight(0xffffff)
-pointLight.position.set(5, 5, 5)
+const pointLight = new THREE.PointLight(0xffffff, 150, 100)
+pointLight.position.set(3, 3, 12)
 
-const ambientLight = new THREE.AmbientLight(0xffffff)
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.5)
 
 scene.add(pointLight, ambientLight)
 
@@ -69,6 +67,30 @@ function addStar(){
 }
 
 Array(200).fill().forEach(addStar)
+
+const spaceTexture = new THREE.TextureLoader().load('/images/space.jpeg')
+spaceTexture.needsUpdate = true
+scene.background = spaceTexture
+
+
+//Avatar
+const aurelieTexture = new THREE.TextureLoader().load('/images/aurelie.jpeg')
+const aurelie = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial({ map: aurelieTexture })
+)
+scene.add(aurelie)
+
+
+//Jupiter
+const jupiterTexture = new THREE.TextureLoader().load('/images/jupiter.jpeg')
+
+const jupiter = new THREE.Mesh(
+  new THREE.SphereGeometry(5, 32, 32),
+  new THREE.MeshStandardMaterial({ map:jupiterTexture })
+) 
+scene.add(jupiter)
+
 
 
 function animate() {
