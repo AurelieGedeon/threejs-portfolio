@@ -95,7 +95,6 @@ scene.add(jupiter)
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top
-  jupiter.rotateX += 0.05
 
   aurelie.rotateY(0.05)
   aurelie.rotateY(0.075)
@@ -118,6 +117,7 @@ function animate() {
 
   aurelie.rotateX(0.005)
 
+  jupiter.rotateY(0.005)
 
   controls.update()
 
